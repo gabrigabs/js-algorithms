@@ -49,14 +49,34 @@ class LinkedList {
 
         return temp;
     }
+
+    unshift(value) {
+        const newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+    }
+
+    shift(){
+        this.head = this.head.next;
+        if(this.head === null){
+            this.tail = null;
+
+        }
+        this.length --;
+    }
 }
 
-const myLinkedList = new LinkedList(10);
-
-myLinkedList.push(3);
+const myLinkedList = new LinkedList(13);
+myLinkedList.unshift(3);
 myLinkedList.push(7);
+myLinkedList.push(18);
 myLinkedList.pop();
+myLinkedList.shift();
 
 const result = console.log(JSON.stringify(myLinkedList, null, 3))
-
-console.log(result);
