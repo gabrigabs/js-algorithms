@@ -13,8 +13,24 @@ class LinkedList {
         this.tail = this.head;
         this.length = 1;
     }
+
+    push(value) {
+        const newNode = new Node(value);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        }else{
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.length++;
+    }
 }
 
 const myLinkedList = new LinkedList(10);
+myLinkedList.push(1);
+myLinkedList.push(22);
 
-console.log(myLinkedList);
+const result = JSON.stringify(myLinkedList, null, 3)
+
+console.log(result);
