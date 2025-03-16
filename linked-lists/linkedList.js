@@ -25,12 +25,38 @@ class LinkedList {
         }
         this.length++;
     }
+
+    pop(){
+        if(!this.head && !this.tail) return undefined;
+
+        let temp = this.head;
+        let pre = this.head;
+
+        while(temp.next){
+            pre = temp;
+            temp = temp.next;
+            
+        }
+
+        this.tail = pre;
+        this.tail.next = null;
+        this.length--;
+
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+
+        return temp;
+    }
 }
 
 const myLinkedList = new LinkedList(10);
-myLinkedList.push(1);
-myLinkedList.push(22);
 
-const result = JSON.stringify(myLinkedList, null, 3)
+myLinkedList.push(3);
+myLinkedList.push(7);
+myLinkedList.pop();
+
+const result = console.log(JSON.stringify(myLinkedList, null, 3))
 
 console.log(result);
