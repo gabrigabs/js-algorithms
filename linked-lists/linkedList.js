@@ -175,6 +175,36 @@ class LinkedList {
     }
 
 
+    // leetCode Exercises
+    
+    findMiddleNode(){
+        let temp = this.head;
+        let counter = 0;
+        
+        while(temp !== null){
+            counter++
+            temp = temp.next;
+        }
+        
+        let middleNumber = 0;
+        if(counter %2 === 0){
+            middleNumber = (counter / 2);
+        } else {
+          middleNumber = Math.round(counter / 2) - 1;
+        }
+        
+        let result = this.head;
+
+        for(let i = 0; i < middleNumber; i++){
+            result = result.next;
+            
+        }
+        
+        return result;
+        
+    }
+
+
 }
 
 const myLinkedList = new LinkedList(13);
